@@ -1,6 +1,6 @@
 import datetime
 
-## This will give the urls to download traffic data dddd
+## This will give the urls to download traffic data dddd ddd
 date = datetime.date(2019,11,1)
 currentDate = datetime.datetime.now().date()
 difference = currentDate - date
