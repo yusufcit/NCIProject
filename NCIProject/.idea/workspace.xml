@@ -2,15 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="66d68219-32df-44fa-bf29-ee03e3624008" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DateTime.py" beforeDir="false" afterPath="$PROJECT_DIR$/GetDownloadUrl.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sampleSeleniumTest.py" beforeDir="false" afterPath="$PROJECT_DIR$/GetTrafficData.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CarSalesData/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ChargingPointData/__init__.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -21,6 +27,11 @@
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="C:/Program Files/Git/mingw64/bin/git.exe" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\myusuf\NCIProject\NCIProject\NCIProject\TrafficData" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
