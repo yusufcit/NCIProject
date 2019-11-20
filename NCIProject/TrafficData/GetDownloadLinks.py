@@ -6,7 +6,7 @@ class GetDownloadLinks:
         self.fromDate = fromDate
         self.toDate = toDate
 
-
+# geturls: generates urls and returns them
 def geturls(fromDate, toDate):
     duration = toDate - fromDate
     print(duration.days)

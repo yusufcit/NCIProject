@@ -10,6 +10,7 @@ toDate = datetime.datetime.now().date() - datetime.timedelta(1)
 
 urls = GetDownloadLinks.geturls(fromDate, toDate)
 
+# download the files in download directory
 for url in urls:
     driver.get(url)
 
