@@ -6,6 +6,7 @@ import requests
 import os
 import DBConnection
 from TrafficData import GetDownloadLinks
+from TrafficData.GetGeoLocations import addgeLocationData
 
 currentDir = os.getcwd()
 print ("The current working directory is %s" % currentDir)
@@ -78,3 +79,4 @@ for r, d, f in os.walk(path):
 
 cursor.close()
 
+addgeLocationData()
