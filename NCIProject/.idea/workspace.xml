@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="66d68219-32df-44fa-bf29-ee03e3624008" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/TrafficData/GetGeoLocations.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TrafficData/child.py" beforeDir="false" afterPath="$PROJECT_DIR$/TrafficData/child.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TrafficData/getTrafficDataSoup.py" beforeDir="false" afterPath="$PROJECT_DIR$/TrafficData/getTrafficDataSoup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TrafficData/GetGeoLocations.py" beforeDir="false" afterPath="$PROJECT_DIR$/TrafficData/GetGeoLocations.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
