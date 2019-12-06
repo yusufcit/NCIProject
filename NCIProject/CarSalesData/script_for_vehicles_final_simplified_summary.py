@@ -62,37 +62,47 @@ driver.find_element_by_xpath("//select[@id='filter_date_month_from']/option[text
 driver.find_element_by_xpath("//select[@id='filter_date_month_to']/option[text()='December']").click() #filter to month - left as to DEC
 
 #===========================================================================================================
+#PART III: CREATE A PRIMARY KEY
+#_____________________________
 
-#PART III: CREATE FUNCTIONS
+ID = 1
+
+#===========================================================================================================
+
+#PART IV: CREATE FUNCTIONS
 #__________________________
 
 def create_record_for_csv():
     '''Create the records
     the below looks for the data, copy it and paste it in the car_registration variable before being added as a row in the csv file'''
+    global ID #this is to call the primary key created in part III
     for z in range(2,14): #there are 12 months and the first data for Jan starts where b=2
         car_registration = []
-        #1 Dimension: Year
+        #2 Dimension: Registration ID (this is the primary key)
+        #------------------------------------------------------
+        car_registration.append(ID)
+        #2 Dimension: Year
         #-----------------
         year = driver.find_element_by_xpath("//div/div[3]/div/div[2]/div[3]/div/div[2]/div/div/table/tbody/tr[1]/td["+str(1)+"]/span").text #Note that this is static (str(1)) as we are always picking the year that we filtered
         car_registration.append(year)
-        #2 Dimension: Month
+        #3 Dimension: Month
         #------------------
         car_registration.append(month[z-2]) #this is pulling the month from the variable created in II/
-        #3 Dimension: County
+        #4 Dimension: County
         #-------------------
         try:
             county = driver.find_element_by_xpath("//div/div[4]/div[2]/div/div[1]/div[4]/div[2]/div/div/div[2]/span/span").text #text for county taken from the filter box
             car_registration.append(county)
         except:
             car_registration.append("")       
-        #4 Dimension: Registration type
+        #5 Dimension: Registration type
         #------------------------------
         try:
             registration_type = driver.find_element_by_xpath("//div/div[4]/div[2]/div/div[1]/div[2]/div[2]/div[1]/div/select/option["+str(b)+"]").text 
             car_registration.append(registration_type)
         except:
             car_registration.append("")
-        #5 Dimension: Engine type 
+        #6 Dimension: Engine type 
         #-------------------------
         try:
             if g==2:
@@ -103,11 +113,11 @@ def create_record_for_csv():
                 car_registration.append('Hybrid')      
         except:
             car_registration.append("")
-        #6 Fact: Car registration count
+        #7 Fact: Car registration count
         #-------------------------------
         try:
             car_registration_count = driver.find_element_by_xpath("//div/div[3]/div/div[2]/div[3]/div/div[2]/div/div/table/tbody/tr[1]/td["+str(z)+"]/span").text
-            car_registration.append(car_registration_count)
+            car_registration.append(car_registration_count.replace(',','')) #we remove a comma if the number is higher so that this is processed as int in postgres
         except:
             car_registration.append("")
         #Add the records to the csv file
@@ -116,10 +126,11 @@ def create_record_for_csv():
             csvwriter_junk.writerow(car_registration) #if no results, then the records will be added to the junk file               
         else:
             csvwriter.writerow(car_registration) #adds the whole line created in the csv file
+            ID +=1
 
 #===========================================================================================================
 
-#PART IV: CREATE THE CSV FILE AND THE HEADER
+#PART V: CREATE THE CSV FILE AND THE HEADER
 #___________________________________________
 
 #Variables created to simplify the data added to the csv file
@@ -127,12 +138,12 @@ def create_record_for_csv():
 
 month = ['January','February','March','April','May','June','July','August','September','October','November','December']
 #passenger_cars_header = ['Year','Month','County','Car Make','Model','Registration type','Age profile','Imported from','Transmission','Engine type','CO2 category','CO2 band','Segment','Body type','Car registration count']
-passenger_cars_header = ['Year','Month','County','Registration type','Engine type','Car registration count']
+passenger_cars_header = ['Registration ID','Year','Month','County','Registration type','Engine type','Car registration count']
 
 #Create a csv file
 #-----------------
-passenger_cars = open('C:\\Users\\alain\\Documents\\NCI\\1st semester\\Database and analytics\\project\\passengercars_summary.csv', 'w', newline='')
-junk = open('C:\\Users\\alain\\Documents\\NCI\\1st semester\\Database and analytics\\project\\junk_summary.csv', 'w', newline='') #a junk file is created and will be deleted once the loop is completed
+passenger_cars = open('C:\\Users\\alain\\Documents\\NCI\\1st semester\\Database and analytics\\project\\passengercars.csv', 'w', newline='')
+junk = open('C:\\Users\\alain\\Documents\\NCI\\1st semester\\Database and analytics\\project\\junk.csv', 'w', newline='') #a junk file is created and will be deleted once the loop is completed
 
 #Create the header for the csv file
 #----------------------------------
@@ -143,7 +154,7 @@ csvwriter_junk = csv.writer(junk) #for the junk file
 
 #===========================================================================================================
 
-#PART V: LOOPS FOR FILTERS AND ADDS DATA TO THE CSV FILE
+#PART VI: LOOPS FOR FILTERS AND ADDS DATA TO THE CSV FILE
 #_________________________________________________________
 
 #Loop 1: this is the loop the year filter
@@ -242,7 +253,6 @@ for a in range(1,14): #year loop (2019 to 2007)
                             #Create the records
                             #~~~~~~~~~~~~~~~~~~
                             create_record_for_csv() #paste the final output in the csv file
- 
 
                     #Remove the filter from loop 3: engine type
                     #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -301,7 +311,7 @@ for a in range(1,14): #year loop (2019 to 2007)
             driver.find_element_by_xpath("//div/div[4]").click() #a trick needed so that the next dropdown can be picked up
 
 #===========================================================================================================
-#PART VI: CLOSE THE CSV FILE
+#PART VII: CLOSE THE CSV FILE
 #___________________________ 
 passenger_cars.close()
 
@@ -314,4 +324,4 @@ print('SCRAPPING IS NOW SUCCESSFULLY COMPLETE!!!')
 #PART VIII: CLOSE AND DELETE THE JUNK FILE
 #_________________________________________
 junk.close() #closes the junk file
-os.remove('C:\\Users\\alain\\Documents\\NCI\\1st semester\\Database and analytics\\project\\junk_summary.csv') #delete the junk file
+os.remove('C:\\Users\\alain\\Documents\\NCI\\1st semester\\Database and analytics\\project\\junk.csv') #delete the junk file
