@@ -25,7 +25,7 @@ else:
     print ("Directory %s created" % path)
 os.chdir(path)
 fromDate = datetime.date(2019,11,20)
-toDate = datetime.datetime.now().date() - datetime.timedelta(15)
+toDate = datetime.datetime.now().date() - datetime.timedelta(13)
 
 urls = GetDownloadLinks.geturls(fromDate, toDate)
 
@@ -69,13 +69,17 @@ for r, d, f in os.walk(path):
                     elif find_non_digit(row):
                         print("Unwanted data found")
                     else:
-                        vale = (row[0],row[1],row[2],row[3],row[4],row[5])
-                        cursor.execute(
-                            "INSERT INTO TrafficData (cosit, class, year, month, day,VehicleCount) VALUES (%s, %s, %s, %s, %s, %s)",
-                            vale)
-                        count = cursor.rowcount
-                        print("number of raw effected: %s", count)
-                        conn.commit()
+                        try:
+                            vale = (row[0], row[1], row[2], row[3], row[4], row[5])
+                            cursor.execute(
+                                "INSERT INTO TrafficData (cosit, class, year, month, day,VehicleCount) VALUES (%s, %s, %s, %s, %s, %s)",
+                                vale)
+                            count = cursor.rowcount
+                            print("number of raw effected: %s", count)
+                            conn.commit()
+                        except:
+                            print("Failed to add following to DB: %s ", vale)
+
 
 cursor.close()
 
