@@ -1,7 +1,6 @@
+import os
+import datetime
 
 
-sample = "hello'world'woll"
-new = sample.replace("'","\'")
-
-print(sample.replace("'","\\'"))
+print(datetime.datetime.now())
 
