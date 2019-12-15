@@ -121,6 +121,5 @@ def evPerCharingPoint():
         if not os.path.exists("graphImages"):
             os.mkdir("graphImages")
         fig.write_image("graphImages/Appendix5_EvPerChargingPoint.png")
-        conn.close()
     except:
         print("Failed to get EV per charging point")

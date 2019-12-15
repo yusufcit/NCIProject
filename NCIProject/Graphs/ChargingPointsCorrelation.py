@@ -157,7 +157,6 @@ def chargPointCorrolation():
         # calculate spearman's correlation
         corr, _ = spearmanr(df['average_charging_usage'], df['traffic_count'])
         print('Spearmans correlation: %.3f' % corr)
-        conn.close()
     except:
         print("Failed to get traffic and charging point correlation")
 

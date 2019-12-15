@@ -1,6 +1,4 @@
-#https://medium.com/@pknerd/data-visualization-in-python-line-graph-in-matplotlib-9dfd0016d180
-#https://stackoverflow.com/questions/28337117/how-to-pivot-a-dataframe-in-pandas
-#https://plot.ly/python/text-and-annotations/
+
 import os
 import psycopg2
 import pandas as pd
