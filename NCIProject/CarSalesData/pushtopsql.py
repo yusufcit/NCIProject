@@ -1,8 +1,4 @@
-from gevent import os
-
-#https://www.dataquest.io/blog/loading-data-into-postgres/
-
-#import csv
+import os
 import psycopg2
 
 def insertIntoDB():

@@ -1,6 +1,7 @@
 import requests
 
-import DBConnection
+from DBConnect import DBConnection
+
 
 def addgeLocationData():
     url = "https://data.tii.ie/Datasets/TrafficCountData/sites/tmu-sites.json"

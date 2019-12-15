@@ -1,9 +1,8 @@
-
-
+import os
 import wget
-from gevent import os
 
-from CarSalesData import pushtopsql, Graph_ev_proportion
+
+from CarSalesData import pushtopsql
 
 
 def carSales():
@@ -29,7 +28,6 @@ def carSales():
 
     ### Pushing to DB
     pushtopsql.insertIntoDB()
-    Graph_ev_proportion.graphEVProportion()
 
 
 

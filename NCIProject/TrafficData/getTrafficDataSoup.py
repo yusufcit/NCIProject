@@ -4,12 +4,13 @@ import datetime
 import re
 import requests
 import os
-import DBConnection
 from TrafficData import GetDownloadLinks
+
+
+from DBConnect import DBConnection
 from TrafficData.GetGeoLocations import addgeLocationData
 
 def gatherTrafficData():
-    print("start time: ", datetime.datetime.now())
     currentDir = os.getcwd()
     print("The current working directory is %s" % currentDir)
 
@@ -36,8 +37,8 @@ def gatherTrafficData():
     for url in urls:
         iterator = iterator + 1
         os.chdir(path)
-        currentDir = os.getcwd()
-        print("The current working directory is %s" % currentDir)
+        workingDir = os.getcwd()
+        print("The current working directory is ", workingDir)
         response = requests.get(url)
         print("url content is: " + url)
         open('file%s' % iterator + '.csv', 'wb').write(response.content)
@@ -80,19 +81,21 @@ def gatherTrafficData():
                         elif find_non_digit(row):
                             print("Unwanted data found")
                         else:
+                            print("Inserting following to DB: ", row)
                             try:
                                 vale = (row[0], row[1], row[2], row[3], row[4], row[5])
                                 cursor.execute(
                                     "INSERT INTO TrafficData (cosit, class, year, month, day,VehicleCount) VALUES (%s, %s, %s, %s, %s, %s)",
                                     vale)
                                 count = cursor.rowcount
-                                print("number of raw effected: %s", count)
+                                print("number of raw effected: ", count)
                                 conn.commit()
+                                print("Following value is inserted to DB: ", row)
                             except:
-                                print("Failed to add following to DB: %s ", vale)
+                                print("Failed to add following to DB: ", vale)
 
     cursor.close()
 
     addgeLocationData()
 
-    print("End time: ", datetime.datetime.now())
+    os.chdir(currentDir)

@@ -6,17 +6,20 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="EVDataIreland", # Replace with your own username
-    version="0.0.1",
-    author="Example Author",
-    author_email="author@example.com",
-    description="A small example package",
+    version="2.0.1",
+    author="Yusuf, Alain, David",
+    author_email="yusufcit@gmail.com",
+    install_requires=['psycopg2', 'pandas', 'datetime', 'requests','folium', 'plotly','bs4','beautifulsoup4','orca','wget','matplotlib','numpy','scipy'],
+    description="Packaging up EV data ireland project",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/pypa/sampleproject",
-    packages=setuptools.find_packages(),
+    packages=setuptools.find_packages("NCIProject"),
+    package_dir={'': 'NCIProject'},
+    py_modules = ['StartEVapp'],
     entry_points={
         'console_scripts': [
-            'evdata = EntryPoint:main',
+            'StartEVapp = StartEVapp:main',
 	        ],
         },
     # *strongly* suggested for sharing
