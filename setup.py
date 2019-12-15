@@ -9,7 +9,7 @@ setuptools.setup(
     version="2.0.1",
     author="Yusuf, Alain, David",
     author_email="yusufcit@gmail.com",
-    install_requires=['psycopg2', 'pandas', 'datetime', 'requests','folium', 'plotly','bs4','beautifulsoup4','orca','wget','matplotlib','numpy','scipy'],
+    install_requires=['psycopg2', 'pandas', 'datetime', 'requests','folium', 'plotly','bs4','beautifulsoup4','wget','orca','matplotlib','scipy','numexpr'],
     description="Packaging up EV data ireland project",
     long_description=long_description,
     long_description_content_type="text/markdown",

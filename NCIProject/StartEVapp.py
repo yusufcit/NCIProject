@@ -1,6 +1,6 @@
 from CarSalesData import passengercarmediafire
 from ChargingPointData import EVChargingPoint
-from Graphs import Ev_hv_car_registration_by_year, Charging_points_count_by_year, \
+from visualization import Ev_hv_car_registration_by_year, Charging_points_count_by_year, \
     Vehiclecount_per_road, Ev_proportion, ChargingPointsCorrelation, \
     Ev_per_charging_point, Charging_points_by_hour
 from TrafficData import getTrafficDataSoup

@@ -43,9 +43,6 @@ def ChargingPointCountByYear():
         plt.ylabel('Charging points count')
         plt.xlabel('Year')
 
-        # # Show graphic
-        # plt.show()
-
         # saving the figure as png
         fig1 = plt.gcf()
         plt.draw()
